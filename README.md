@@ -1,24 +1,6 @@
-# README
+# Word guessing game
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Players get a grid of letters, and must find the longest word possible in English with these letters.
+No points are awarded if the word does not exist or does not match the set of letters.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Created with Ruby on Rails, using a dictionary API.
