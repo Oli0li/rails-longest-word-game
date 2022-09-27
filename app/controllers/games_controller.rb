@@ -4,31 +4,30 @@ require "open-uri"
 class GamesController < ApplicationController
   $nb_of_games = 0
   $overall_score = 0
+  VOWELS = %w[A E I O U Y]
 
   def new
-    @letters = ("A".."Z").to_a.sample(10)
-  end
-
-  def score
-    $nb_of_games += 1
+    @letters = (VOWELS.sample(5) + (("A".."Z").to_a - VOWELS).sample(5)).shuffle
     @word = params[:guess]
-    grid = params[:grid].split
-    word_letters = @word.upcase.chars
-    @message = ""
-    @found = false
-    # raise
-    if check_if_in_grid(grid, word_letters)
-      if check_if_exists(@word)
-        score = compute_score(@word)
-        $overall_score += score
-        @message = "Congratulations! #{@word.upcase} is a valid English word. You won #{score} point#{score == 1 ? "" : "s"}."
+    unless @word.nil?
+      $nb_of_games += 1
+      grid = params[:grid].split
+      word_letters = @word.upcase.chars
+      @message = ""
+      @found = false
+      if check_if_in_grid(grid, word_letters)
+        if check_if_exists(@word)
+          score = compute_score(@word)
+          $overall_score += score
+          @message = "Congratulations! \"#{@word.capitalize}\" is a valid English word. You won #{score} point#{score == 1 ? "" : "s"}."
+        else
+          @message = "Sorry, \"#{@word}\" does not seem to be a valid English word. No points awarded for this round."
+        end
       else
-        @message = "Sorry but #{@word.upcase} does not seem to be a valid English word"
+        @message = "Sorry, it seems like \"#{@word}\" can't be build out of #{grid.join(",")}. No points awarded for this round."
       end
-    else
-      @message = "Sorry but #{@word.upcase} can't be build out of #{grid.join(",")}"
+      @message
     end
-    @message
   end
 
   private

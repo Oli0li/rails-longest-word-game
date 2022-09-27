@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h1>The Longest Word</h1>
 
   <ul>
@@ -7,19 +7,19 @@
     <% end %>
   </ul>
 
-  <form action="/score" method="post" data-turbo="false">
+  <form method="post" data-turbo="false">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :grid, @letters %>
     <input type="text" name="guess">
     <input type="submit" value="Guess">
   </form>
-</div>
 
-<% if $nb_of_games > 0 %>
-  <div class="score">
-    <h1>Your score</h1>
-    <p><%= @message %></p>
-    <p>Number of games played: <%= $nb_of_games %></p>
-    <p>Total score: <%= $overall_score %></p>
-  </div>
-<% end %>
+  <% if $nb_of_games > 0 %>
+    <div class="score">
+      <h1>Your score</h1>
+      <p id="guess-result"><%= @message %></p>
+      <p><strong>Number of games played:</strong> <%= $nb_of_games %></p>
+      <p><strong>Total score:</strong> <%= $overall_score %></p>
+    </div>
+  <% end %>
+</div>
