@@ -25,7 +25,7 @@
             <%= "Sorry, \"#{@word}\" does not seem to be a valid English word. No points awarded for this round." %>
           <% end %>
         <% else %>
-          <%= "Sorry, it seems like \"#{@word}\" can't be build out of #{@grid.join(",")}. No points awarded for this round." %>
+          <%= "Sorry, it seems like \"#{@word}\" can't be built with the letters you were given. No points awarded for this round." %>
         <% end %>
       </p>
       <p><strong>Number of games played:</strong> <%= $nb_of_games %></p>
