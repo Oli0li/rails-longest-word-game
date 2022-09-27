@@ -14,3 +14,13 @@
     <input type="submit" value="Guess">
   </form>
 </div>
+
+<% if $nb_of_games > 0 %>
+  <div class="score">
+    <h1>Your score</h1>
+    <p><%= @message %></p>
+    <p>Number of games played: <%= $nb_of_games %></p>
+    <p>Overall score: <%= $overall_score %></p>
+    <%= link_to "Play a new game", root_path %>
+  </div>
+<% end %>

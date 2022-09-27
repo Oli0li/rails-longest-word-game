@@ -2,11 +2,15 @@ require "json"
 require "open-uri"
 
 class GamesController < ApplicationController
+  $nb_of_games = 0
+  $overall_score = 0
+
   def new
     @letters = ("A".."Z").to_a.sample(10)
   end
 
   def score
+    $nb_of_games += 1
     @word = params[:guess]
     grid = params[:grid].split
     word_letters = @word.upcase.chars
@@ -15,7 +19,9 @@ class GamesController < ApplicationController
     # raise
     if check_if_in_grid(grid, word_letters)
       if check_if_exists(@word)
-        @message = "Congratulations! #{@word.upcase} is a valid English word. You won #{compute_score(@word)} point#{compute_score(@word) == 1 ? "" : "s"}."
+        score = compute_score(@word)
+        $overall_score += score
+        @message = "Congratulations! #{@word.upcase} is a valid English word. You won #{score} point#{score == 1 ? "" : "s"}."
       else
         @message = "Sorry but #{@word.upcase} does not seem to be a valid English word"
       end

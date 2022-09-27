@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import "home";
+
  ul {
   list-style: none;
   display: flex;
