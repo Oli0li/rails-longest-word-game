@@ -25,8 +25,7 @@ class GamesController < ApplicationController
   private
 
   def check_if_in_grid(grid, word_letters)
-    check = grid.map { |letter| grid.count(letter) >= word_letters.count(letter) }
-    check.all?
+    word_letters.all? { |letter| word_letters.count(letter) <= grid.count(letter) }
   end
 
   def check_if_exists(word)
