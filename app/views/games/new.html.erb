@@ -11,7 +11,7 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :grid, @letters %>
     <input type="text" name="guess">
-    <input type="submit" value="Guess">
+    <input type="submit" value="Guess" class="guess-button">
   </form>
 
   <% if $nb_of_games > 0 %>
@@ -30,6 +30,7 @@
       </p>
       <p><strong>Number of games played:</strong> <%= $nb_of_games %></p>
       <p><strong>Total score:</strong> <%= $overall_score %></p>
+      <%= button_to "Reset game", root_path, method: :patch, class: "reset-button" %>
     </div>
   <% end %>
 </div>

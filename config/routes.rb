@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
     root "games#new"
     post "/", to: "games#new"
+    patch "/", to: "games#reset"
 end

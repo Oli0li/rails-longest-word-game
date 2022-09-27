@@ -21,6 +21,22 @@ ul {
   border-radius: 2px;
  }
 
+ .guess-button {
+  background-color: white;
+  color: #4949f6;
+  border: 1px solid #4949f6;
+  border-radius: 2px;
+  padding: 3px;
+ }
+
+ .reset-button {
+  background-color: #4949f6;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 5px;
+ }
+
  .container {
   margin: 25vh auto;
   width: 50%;
