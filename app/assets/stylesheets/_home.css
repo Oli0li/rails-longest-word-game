@@ -1,3 +1,16 @@
-.score {
-  /* display: none; */
-}
+ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+ }
+
+ li {
+  padding: 10px;
+  background-color: rgb(94, 94, 247);
+  color: white;
+ }
+
+ div {
+  margin: 20px;
+ }
