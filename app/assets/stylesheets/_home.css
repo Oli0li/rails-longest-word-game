@@ -1,16 +1,45 @@
+
+ body {
+  background-image: url("piotr-laskawski-gL7oJLJOb_I-unsplash_scrabble_letters.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+ }
+
 ul {
   list-style: none;
   display: flex;
+  justify-content: center;
   gap: 15px;
   padding: 0;
  }
 
  li {
   padding: 10px;
-  background-color: rgb(94, 94, 247);
+  background-color: #4949f6;
   color: white;
+  width: 13px;
+  border-radius: 2px;
  }
 
- div {
-  margin: 20px;
+ .container {
+  margin: 25vh auto;
+  width: 50%;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ #game-title {
+  margin-top: 0;
+ }
+
+ form {
+  padding-bottom: 5px;
+ }
+
+ #guess-result {
+  font-size: large;
  }
