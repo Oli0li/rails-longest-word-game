@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     unless @word.nil?
       $nb_of_games += 1
       @grid = params[:grid].split
-      word_letters = @word.upcase.chars
+      word_letters = @word.strip.upcase.chars
       @in_grid = check_if_in_grid(@grid, word_letters)
       @valid_english_word = check_if_exists(@word)
       if @in_grid && @valid_english_word
@@ -25,8 +25,7 @@ class GamesController < ApplicationController
   private
 
   def check_if_in_grid(grid, word_letters)
-    check = grid.map { |letter| grid.count(letter) >= word_letters.count(letter) }
-    check.all?
+    word_letters.all? { |letter| word_letters.count(letter) <= grid.count(letter) }
   end
 
   def check_if_exists(word)
