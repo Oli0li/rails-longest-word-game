@@ -22,6 +22,12 @@ class GamesController < ApplicationController
     end
   end
 
+  def reset
+    $nb_of_games = 0
+    $overall_score = 0
+    redirect_to root_path
+  end
+
   private
 
   def check_if_in_grid(grid, word_letters)
