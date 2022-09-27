@@ -11,22 +11,14 @@ class GamesController < ApplicationController
     @word = params[:guess]
     unless @word.nil?
       $nb_of_games += 1
-      grid = params[:grid].split
+      @grid = params[:grid].split
       word_letters = @word.upcase.chars
-      @message = ""
-      @found = false
-      if check_if_in_grid(grid, word_letters)
-        if check_if_exists(@word)
-          score = compute_score(@word)
-          $overall_score += score
-          @message = "Congratulations! \"#{@word.capitalize}\" is a valid English word. You won #{score} point#{score == 1 ? "" : "s"}."
-        else
-          @message = "Sorry, \"#{@word}\" does not seem to be a valid English word. No points awarded for this round."
-        end
-      else
-        @message = "Sorry, it seems like \"#{@word}\" can't be build out of #{grid.join(",")}. No points awarded for this round."
+      @in_grid = check_if_in_grid(@grid, word_letters)
+      @valid_english_word = check_if_exists(@word)
+      if @in_grid && @valid_english_word
+        @score = compute_score(@word)
+        $overall_score += @score
       end
-      @message
     end
   end
 
