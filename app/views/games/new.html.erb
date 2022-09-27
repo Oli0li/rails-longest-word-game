@@ -1,0 +1,25 @@
+<div>
+  <h1>The Longest Word</h1>
+
+  <ul>
+    <% @letters.each do |letter| %>
+      <li><%= letter %></li>
+    <% end %>
+  </ul>
+
+  <form action="/score" method="post" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :grid, @letters %>
+    <input type="text" name="guess">
+    <input type="submit" value="Guess">
+  </form>
+</div>
+
+<% if $nb_of_games > 0 %>
+  <div class="score">
+    <h1>Your score</h1>
+    <p><%= @message %></p>
+    <p>Number of games played: <%= $nb_of_games %></p>
+    <p>Total score: <%= $overall_score %></p>
+  </div>
+<% end %>
