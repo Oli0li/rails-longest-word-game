@@ -8,11 +8,11 @@ class GamesController < ApplicationController
 
   def new
     @letters = (VOWELS.sample(5) + (("A".."Z").to_a - VOWELS).sample(5)).shuffle
-    @word = params[:guess].strip
+    @word = params[:guess]
     unless @word.nil?
       $nb_of_games += 1
       @grid = params[:grid].split
-      word_letters = @word.upcase.chars
+      word_letters = @word.strip.upcase.chars
       @in_grid = check_if_in_grid(@grid, word_letters)
       @valid_english_word = check_if_exists(@word)
       if @in_grid && @valid_english_word
