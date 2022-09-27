@@ -8,7 +8,7 @@ class GamesController < ApplicationController
 
   def new
     @letters = (VOWELS.sample(5) + (("A".."Z").to_a - VOWELS).sample(5)).shuffle
-    @word = params[:guess]
+    @word = params[:guess].strip
     unless @word.nil?
       $nb_of_games += 1
       @grid = params[:grid].split
