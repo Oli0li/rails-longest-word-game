@@ -5,4 +5,4 @@ No points are awarded if the word does not exist or does not match the set of le
 
 Created with Ruby on Rails, using a dictionary API.
 
-Feel free to check it out here: https://longest-word-guessing-game.herokuapp.com/
+Screenshots of the app can be seen here: https://troopl.com/oliviabonnal/longest-word-game
